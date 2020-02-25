@@ -156,7 +156,7 @@ a:link,a:hover,a:visited,a:active{
         color: #c0c9c2;
     }
 }
-@media only screen and (max-width: 520px) {
+@media only screen and (max-width: 560px) {
     ul{
         display:none;
     }
