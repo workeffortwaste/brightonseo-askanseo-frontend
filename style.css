@@ -33,13 +33,14 @@ body{
 }
 header{
     background-color: var(--secondary-color);
-    padding: calc(var(--default-spacing) * 1);
     padding-top: var(--default-spacing);
     padding-bottom: calc(var(--default-spacing) * 2);
 }
 #topbar {
     display:grid;
     grid-template-columns: auto auto;
+    padding-left:var(--default-spacing);
+    padding-right:var(--default-spacing)
 }
 #topbar div{
     font-family: var(--font-large);
@@ -61,6 +62,9 @@ nav ul li{
 }
 #answerbox {
     overflow: hidden;
+    padding:var(--default-spacing);
+    padding-top:0;
+    padding-bottom:0;
 }
 #answerbox *{
     font-family:var(--font-large);
