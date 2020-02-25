@@ -34,7 +34,6 @@ function fetchAnswer() {
 }
 function updatePlaceholder(){
     let w = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth ;
-    console.log(w);
     if (w < 410) {
         document.getElementById('question').placeholder='Your question.';
     } else {
