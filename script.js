@@ -14,7 +14,8 @@ function updateAnswer(response){
 }
 
 function fetchAnswer() {
-    document.getElementById('hiddenanswer').classList.toggle('revealanswer');
+    document.getElementById('hiddenanswer').classList.add('revealanswer');
+    document.getElementById('answer').innerText = '..';
     fetch('https://api.askanseo.dev/?question=' + question)
         .then(response => {
             // Throw an error if we didn't receive a valid 200 response.
@@ -31,12 +32,16 @@ function fetchAnswer() {
             // We didn't receive a valid 200 response. Handle our error.
         });
 }
-
-window.addEventListener('resize', function() {
-    let w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
-    if (w < 420) {
+function updatePlaceholder(){
+    let w = document.documentElement.clientWidth || document.body.clientWidth || window.innerWidth ;
+    console.log(w);
+    if (w < 410) {
         document.getElementById('question').placeholder='Your question.';
     } else {
         document.getElementById('question').placeholder='Ask an SEO a question.';
     }
+}
+window.addEventListener('resize', function() {
+    updatePlaceholder();
 });
+updatePlaceholder();
