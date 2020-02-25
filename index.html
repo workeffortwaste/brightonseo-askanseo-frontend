@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <title>Ask An SEO: SaaS (SEO-as-a-Service)</title>
+    <script src="script.js" type="application/javascript" defer></script>
+    <link href="https://fonts.googleapis.com/css?family=Bree+Serif:400,600|Open+Sans:400,600|Source+Code+Pro&display=swap" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+    <meta name="robots" content="noindex">
+</head>
+<body>
+    <header>
+        <div id="topbar">
+            <div>Ask An SEO</div>
+            <nav>
+                <ul>
+                    <li><a href="#about">ABOUT</a></li>
+                    <li><a href="#api">API</a></li>
+                    <li><a href="#github">GITHUB</a></li>
+                    <li><a href="#contact">CONTACT</a></li>
+                </ul>
+            </nav>
+        </div>
+
+        <section id="answerbox">
+            <form autocomplete="off" spellcheck="false">
+                <label for="question"><span class="qa">Q. </span></label>
+                <input type="text" id="question" name="question" placeholder="Ask an SEO a question.">
+                <button id="button">Ask An Seo</button>
+            </form>
+            <div id="hiddenanswer"><span class="qa">A. </span><span id="answer">..</span></div>
+        </section>
+    </header>
+
+    <main>
+        <h1 id="about">Ask An SEO: SaaS (SEO-as-a-Service)</h1>
+        <p>Ask An SEO is an open source API. Any search engine optimisation related question can be posed and an honest answer will be returned as JSON.</p>
+        <p>This site was created as a learning resource for APIs for Chris Johnson's BrightonSEO April 2020 talk, <em>Mastering The API and Having Fun Along The Way.</em></p>
+
+        <h2 id="api">API</h2>
+        <p>The endpoint is <span class="code">https://api.askanseo.dev/</span> and will accept <span class="code">GET</span> and <span class="code">POST</span> requests.</p>
+        <p>The API is hosting as a Google Cloud Function any may take a second or two to respond on the first query.</p>
+
+        <h3>GET</h3>
+        <h4>PYTHON</h4>
+        <p>A simple Python3 <span class="code">GET</span> example using the Requests library.</p>
+<pre>import requests
+
+question = 'Is * a ranking factor?'
+
+response = requests.get('https://api.askanseo.dev/?question=' + question)
+<span class="comment"># Returns true if a valid 200 response was sent.</span>
+if response:
+    <span class="comment"># Print the JSON output.</span>
+    print(response.json())
+else:
+    <span class="comment"># We didn't receive a valid 200 response. Handle the error.</span>
+    print(response.status_code)</pre>
+
+        <h4>JAVASCRIPT</h4>
+        <p>A simple JavaScript <span class="code">GET</span> example using the Fetch API.</p>
+<pre>const question = 'Is * a ranking factor?';
+
+fetch('https://api.askanseo.dev/?question=' + question)
+    .then(response => {
+        <span class="comment">// Throw an error if we didn't receive a valid 200 response.</span>
+        if (!response.ok) {
+            throw Error(response.status);
+        }
+
+        <span class="comment">// If we received a valid 200 response then pass on the JSON data.</span>
+        return response.json();
+    })
+    .then(json => {
+        <span class="comment">// Print the JSON output.</span>
+        console.log(json);
+    })
+    .catch(error => {
+        <span class="comment">// We didn't receive a valid 200 response. Handle the error.</span>
+        console.log(error)
+    });</pre>
+        <h3>POST</h3>
+        <h4>PYTHON</h4>
+        <p>A simple Python3 <span class="code">POST</span> example using the Requests library.</p>
+<pre>import requests
+
+request = {'question': 'Is * a ranking factor?'}
+response = requests.post('https://api.askanseo.dev/', json=request)
+
+<span class="comment"># Returns true if a valid 200 response was sent.</span>
+if response:
+    <span class="comment"># Print the JSON output.</span>
+    print(response.json())
+else:
+    <span id="comment"># We didn't receive a valid 200 response. Handle our error.</span>
+    print(response.status_code)</pre>
+
+        <h4>JAVASCRIPT</h4>
+        <p>A simple JavaScript <span class="code">POST</span> example using the Fetch API.</p>
+
+<pre>
+const question = 'Is * a ranking factor?';
+const request = {"question": question};
+
+fetch('https://api.askanseo.dev/', {
+    method: 'POST',
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(request)
+    })
+    .then(response => {
+        <span class="comment">// Throw an error if we didn't receive a valid 200 response.</span>
+        if (!response.ok) {
+            throw Error(response.status);
+        }
+
+        <span class="comment">// If we received a valid 200 response then pass on the JSON data.</span>
+        return response.json();
+    })
+    .then(json => {
+        <span class="comment">// Print the JSON output.</span>
+        console.log(json);
+    })
+    .catch(error => {
+        <span class="comment">// We didn't receive a valid 200 response. Handle the error.</span>
+        console.log(error)
+    });
+</pre>
+        <h3>RESPONSE</h3>
+        <p>Below is a sample response, in JSON:</p>
+<pre>{
+    "question": "&lt;YOUR QUESTION&gt;"
+    "answer": "&lt;HONEST ANSWER&gt;"
+}</pre>
+
+        <h2 id="github">GITHUB</h2>
+        <p>If you wish to contribute further the source code for the <em>Google Cloud Function</em> and this simple frontend website, they both can be found on Github:</p>
+        <p><a href="#">Ask An SEO API - Google Cloud Function</a></p>
+        <p><a href="#">Ask An SEO Frontend</a></p>
+
+        <h2 id="contact">CONTACT</h2>
+        <p>If you have any questions I can be found on Twitter: <a href="https://www.twitter.com/defaced">@defaced</a></p>
+
+    </main>
+    <footer>
+        Copyright © 2020 All Rights Reserved - Chris Johnson / <a href="https://www.twitter.com/defaced">@defaced</a> / <a href="https://www.bamboonine.co.uk">Bamboo Nine</a>
+    </footer>
+</body>
+</html>
