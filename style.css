@@ -105,6 +105,9 @@ main, footer{
     margin:0 auto;
     padding: var(--default-spacing);
 }
+main{
+     padding-top:0;
+ }
 #hiddenanswer{
     opacity:0;
 }
