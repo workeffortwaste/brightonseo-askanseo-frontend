@@ -54,6 +54,9 @@
         <h3>GET</h3>
         <p>For <span class="code">GET</span> requests the question should be sent as a <span class="code">question</span> parameter in the querystring.</p>
         <p style="word-break: break-all;font-weight:600">Example: ?question=Is%20*%20a%20ranking%20factor?</p>
+        <h4>CURL</h4>
+        <p>A simple <span class="code">GET</span> request using cURL.</p>
+<pre>curl https://api.askanseo.dev/??question=Is%20*%20a%20ranking%20factor?"</pre>
         <h4>PYTHON</h4>
         <p>A simple Python3 <span class="code">GET</span> example using the Requests library.</p>
 <pre>import requests
@@ -94,6 +97,9 @@ fetch('https://api.askanseo.dev/?question=' + question)
         <h3>POST</h3>
         <p>For <span class="code">POST</span> requests should be sent as a JSON payload with <span class="code">question</span> as the name, and the question as the value.</p>
         <p style="font-weight:600">Example: {"question": "Is * a ranking factor?"}</p>
+        <h4>CURL</h4>
+        <p>A simple <span class="code">POST</span> request using cURL.</p>
+        <pre>curl -X POST https://api.askanseo.dev/ -d '{"question":"Is * a ranking factor?"}' -H "Content-Type: application/json"</pre>
         <h4>PYTHON</h4>
         <p>A simple Python3 <span class="code">POST</span> example using the Requests library.</p>
 <pre>import requests
