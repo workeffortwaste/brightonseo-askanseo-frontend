@@ -92,6 +92,7 @@ span#answer::after{
     outline:none;
     font-family: var(--font-large);
     width: calc(100% - 79px);
+    padding:0;
 }
 #question::placeholder{
     -webkit-text-stroke: 1px var(--primary-color);
