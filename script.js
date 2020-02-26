@@ -8,7 +8,13 @@ document.getElementById("button").addEventListener("click", function(event){
     question = document.getElementById('question').value;
     fetchAnswer();
 });
-
+document.getElementById('question').addEventListener('keypress', function(event) {
+    if (event.keyCode === 13) {
+        event.preventDefault();
+        question = document.getElementById('question').value;
+        fetchAnswer();
+    }
+});
 function updateAnswer(response){
     answerbox.innerText = response
 }
